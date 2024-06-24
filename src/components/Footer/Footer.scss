@@ -1,0 +1,148 @@
+
+.footerContainer {
+  margin-top: 30px;
+  background-color: #fff;
+  padding: 30px 100px;
+  display: grid;
+   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+
+  position: relative;
+  color: #686565;
+
+  &::before {
+    content: "";
+    background: linear-gradient(to right, #ffffff 0%, #2fa7cd 50%, #ffffff 100%) repeat scroll 0 0 transparent;
+    height: 5px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  ul li {
+    padding: 10px;
+  }
+
+  ul .bigItem {
+    padding-bottom: 40px;
+  }
+
+  .logoFoo {
+    svg {
+      margin-right: 10px;
+    }
+
+    img {
+      padding-bottom: 40px;
+    }
+  }
+
+  ul li {
+    display: flex;
+    align-items: center;
+  }
+
+  .fooitem {
+    display: flex;
+
+    a {
+      padding-left: 10px;
+
+   
+    }
+  }
+
+  .fooButs {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    // li {
+    //   display: flex;
+    //   a {
+    //     padding-left: 20px;
+    //     color: #686565;
+    //   }
+    // }
+
+    .downloadApp {
+      padding-bottom: 40px;
+    }
+
+    .foobut {
+      border: 1px solid #686565;
+      border-radius: 6px;
+      padding: 5px;
+      margin-bottom: 20px;
+      width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      &:hover {
+        color: #fff;
+        background-color:#007bff
+        
+      }
+
+ svg{
+  margin-right: 10px;
+ }
+    }
+  }
+}
+
+
+.underFoo{
+  padding: 14px 200px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+// height: 50px;
+}
+
+
+// @media (max-width: 350px) {
+//   .footerContainer{
+//     display: grid;
+//     grid-template-columns: 1fr;
+//   }
+ 
+// }
+
+
+// @media (max-width: 650px) {
+//   .footerContainer{
+//     display: grid;
+//     grid-template-columns: 2fr 2fr 2fr;
+//   }
+ 
+// }
+
+
+@media screen and (max-width: 450px) {
+  .footerContainer {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    // width: 130%;
+    width: 100%;
+    margin: 0,auto;
+  }
+
+  .underFoo {
+    padding: 14px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .fooButs {
+    flex-direction: row;
+
+    .foobut {
+      width: auto;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}

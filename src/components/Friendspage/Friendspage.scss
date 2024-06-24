@@ -1,0 +1,126 @@
+.friendsPageContainer {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+
+  // height: 500px;
+  //   overflow: auto;
+
+  .navFriendsPage {
+    display: flex;
+    align-items: center;
+
+    li {
+      display: flex;
+      padding: 10px;
+.frbut{
+  margin-left: 10px;
+}
+      .friendsNum {
+        border: 1px solid rgb(82, 82, 82);
+        padding:  0px 1px;
+        border-radius: 20%;
+        color: rgb(82, 82, 82);
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .friends {
+    margin-top: 25px;
+
+    .friendItem {
+      border: 1px solid rgba(9, 99, 218, 0.1);
+      display: flex;
+      align-items: center;
+      padding: 25px;
+      margin: 20px 10px;
+      img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .friendInfo {
+        flex: 1;
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .friendButtons {
+        button {
+          margin: 5px;
+          padding: 3px 5px;
+
+        }
+      }
+    }
+  }
+
+
+}
+
+
+.navFriendsPage li p:hover,
+.navFriendsPage li p.active {
+
+  position: relative;
+  background-color: #fff;
+
+  color: #088DCD;
+  // padding-top: 5px;
+  // padding-left: 5px;
+
+  &::after {
+    content: '';
+    position: absolute;
+ background-color: #088DCD;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+
+  }
+}
+
+
+.friendButtons button {
+
+  padding: 10px;
+  margin: 5px;
+}
+// .seeMore{
+//   display: flex;
+//   justify-content: end;
+//   align-items: end;
+//   color: #088DCD;
+// }
+@media (max-width: 450px) {
+  .friendButtons button {
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
+@media (max-width: 450px) {
+
+.navFriendsPage li{
+  padding: 0;
+  .frbut{
+    margin-left: 0;
+  }
+.friendsNum {
+display: none;
+}
+}
+
+}

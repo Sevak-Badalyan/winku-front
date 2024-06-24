@@ -1,0 +1,19 @@
+.underlinetitle{
+position: relative;
+font-size: large;
+color: rgb(82, 82, 82);
+padding-top: 5px;
+padding-left: 5px;
+
+
+&::after{
+content:'';
+position: absolute;
+background-color: #088DCD;
+width: 58px;
+height: 2px;
+bottom: -6px;
+left: 0px;
+
+}
+}

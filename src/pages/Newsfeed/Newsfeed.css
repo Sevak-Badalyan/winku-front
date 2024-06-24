@@ -1,0 +1,38 @@
+.gridMenu {
+
+  padding-left: 7%;
+    padding-right: 7%;
+  margin: 0 auto;
+  padding-top: 70px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.gridMenu h1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  background-color: rgb(121, 112, 112);
+}
+
+@media (max-width: 450px) {
+  .gridMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 0;
+    padding-right: 0;
+    &>div {
+      width: 90%;
+    }
+
+  }
+
+  .gridMenu h1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+}

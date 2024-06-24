@@ -1,0 +1,44 @@
+.shortContainer{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    position: sticky;
+    top:67px
+}
+.shortContainer ul{
+    margin-top:10px;
+}
+
+.shortContainer li {
+    display:flex;
+align-items: center;
+    padding: 10px;
+    color: rgba(34, 34, 34, 0.7);
+}
+.shortContainer li p{
+    margin-left: 8px;
+}
+.shortContainer li a:hover{
+
+    color: #088DCD;
+}
+
+.shortContainer li a{ 
+    color: rgba(51, 51, 51, 0.7);
+    display: flex;
+padding-left: 5px;
+padding-bottom: 5px;
+}
+.shortContainer li  svg{
+    margin-right: 5px;
+}
+.shortContainer  .miniShortcuts{
+    display: none;
+}
+@media (max-width: 450px) {
+    .shortContainer{
+        position: static;}
+        .shortContainer  .miniShortcuts{
+            display: block;
+        }
+}

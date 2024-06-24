@@ -1,0 +1,267 @@
+.messageContainer {
+  &+.friendsContainer {
+    display: none;
+  }
+
+  grid-column-start: 2;
+  grid-column-end: 4;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 10px;
+
+  .mesBell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    svg {
+      color: rgb(52, 137, 207);
+    }
+
+    .bellAll {
+      display: flex;
+      align-items: center;
+    }
+
+
+  }
+
+}
+
+
+//
+
+
+
+
+
+.messages {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+
+  .leftFriends {
+    width: auto;
+
+
+    .friendsList {
+      list-style: none;
+      padding: 0;
+      height: 480px;
+      overflow: hidden;
+      overflow-y: auto;
+      // display: flex;
+      // flex-direction: column;
+      left: 5px;
+      // &:hover{
+      //   overflow: auto;
+      // }
+
+      li {
+        border-bottom: 1px solid rgb(219, 219, 219);
+        border-right: 1px solid rgb(218, 218, 218);
+        padding: 10px;
+
+        .friendsInfo {
+          display: flex;
+          align-items: center;
+          // justify-content: space-between;
+          
+          width: 100%;
+         
+          .statImg {
+            position: relative;
+
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              margin-right: 10px;
+              object-fit: cover;
+
+            }
+
+            .status {
+              width: 6px;
+              height: 6px;
+              border-radius: 50%;
+              background-color: white;
+              position: absolute;
+              bottom: 0px;
+              left: 2px;
+            }
+          }
+          .infFriend{
+            margin-right: 5px;
+          }
+        }
+      }
+
+    }
+  }
+
+  .messagesBox {
+    padding: 10px;
+    flex: 2;
+    
+// width: 80%;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .messagesData {
+      height: 340px;
+      overflow: auto;
+    }
+
+    .friendInfoMes {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+
+    }
+
+    div {
+      margin-bottom: 10px;
+    }
+
+    .send {
+      display: flex;
+      // background-color: #e1e9dc;
+      padding: 10px;
+      border-radius: 10px;
+      align-self: flex-end;
+      justify-content: flex-end;
+    }
+
+    .get {
+      // background-color: #dedeee;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .textContainer {
+      border: 1px solid rgba(204, 204, 204, 0.7);
+      position: relative; 
+      textarea {
+        // margin-left: 10px;
+        // resize: none;
+        // outline: none;
+        // border: none;
+        // height: 50px;
+        margin-left: 10px;
+        resize: none;
+        outline: none;
+        border: none;
+        height: 57px;
+        width: 90%;
+      }
+      .sendMesBut{
+        position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      right: -5px;
+      bottom:1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+        color: #e6e6e6;
+
+      }
+    }
+  
+  }
+  
+ 
+  
+  }
+
+}
+
+
+
+
+.message {
+  margin-bottom: 20px;
+}
+
+.messageBubble {
+  background-color: #e6e6e6;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.messageTime {
+  font-size: 12px;
+  color: #999;
+}
+
+
+
+
+
+@media (max-width: 450px) {
+  .messageContainer {
+    padding: 5px;
+  }
+
+  .messages {
+    flex-direction: column;
+
+    .leftFriends {
+      width: 100%;
+      margin-bottom: 10px;
+      height: 200px;
+    overflow: auto;
+
+
+      .friendsList {
+        height: auto;
+      }
+    }
+
+    .messagesBox {
+      flex: none;
+      .friendInfoMes{
+        background-color: #e9e8e8;
+        padding: 10px;
+        width: 100%;
+      }
+
+      .messagesData {
+        height: 300px;
+        p{
+          max-width: 180px;
+        }
+        // div{
+        //   width: 80%;
+        // }
+    //  img{
+    //   display: none;
+    //  }
+      }
+
+      .textContainer {
+        textarea {
+          width: 100%;
+          height: 30px;
+        }
+
+        .sendMesBut {
+          right: 10px;
+          bottom: 10px;
+        }
+      }
+    }
+  }
+}

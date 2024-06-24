@@ -1,0 +1,46 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    background-color: #f4f2f2;
+    font-family: "Roboto", sans-serif;
+    color: #545454;
+    font-family:roboto, segoe ui;
+
+}
+ol,ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+  object-fit: cover;
+}
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: rgb(208, 211, 208);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: rgb(182, 180, 180);
+  }
+
+
+  textarea ,input{
+    color: rgb(80, 80, 80);
+    font-size: medium;
+    font-weight: 400;
+  }

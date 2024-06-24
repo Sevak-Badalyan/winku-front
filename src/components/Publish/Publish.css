@@ -1,0 +1,82 @@
+.publishsContainer {
+    background-color: rgb(255, 255, 255);
+
+    /* height: 160px; */
+    margin-bottom: 20px;
+display: flex;
+flex-direction: column;
+/* margin-top: 38px; */
+}
+
+.publishsContainer .publishs {
+    padding: 30px;
+    display: flex;
+    
+}
+
+.textContainer {
+    width: 100%;
+    border: 1px solid rgba(139, 139, 139, 0.2);
+}
+
+.publishsContainer textarea {
+    margin-left: 10px;
+    resize: none;
+    outline: none;
+    border: none;
+    height: 57px;
+    width: 90%;
+}
+
+.publishsContainer input {
+    width: 90%;
+    height: 40%;
+}
+
+.publishsContainer .user_image{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+   
+}
+.file-preview{
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+} 
+.attachments ul {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.attachments input {
+    display: none;
+}
+
+.attachments ul li {
+    padding-right: 18px;
+    padding-bottom: 10px;
+
+}
+
+.attachments ul li {
+    color: rgb(68, 67, 67);
+
+}
+
+.attachments ul li button {
+    font-size: 12px;
+    background-color: rgb(20, 164, 207);
+    padding: 4px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+
+}
+

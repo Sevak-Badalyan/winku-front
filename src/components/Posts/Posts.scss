@@ -1,0 +1,261 @@
+// Posts.scss
+.bigPost {
+
+  .postsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    // width: 100%;
+
+    .post {
+
+      background-color: white;
+      padding: 20px;
+
+      .userInfo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+
+        .name {
+          font-weight: 700;
+          color: #088DCD;
+
+          div {
+            font-weight: 400;
+          }
+        }
+
+        .userImg {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+
+
+        }
+
+        .publishDate {
+          color: #666;
+
+        }
+      }
+
+      .postContent {
+        margin-bottom: 10px;
+
+        .postPhoto {
+          width: 100%;
+          max-height: 500px;
+          object-fit: cover;
+          margin-bottom: 10px;
+        }
+
+        .interactions {
+          display: flex;
+          justify-content: flex-start;
+          margin: 20px 20px 20px 0px;
+
+          .likes,
+          .comments {
+            color: #666;
+
+            position: relative;
+            margin-right: 20px;
+
+
+            svg {
+              width: 30px;
+            }
+
+            span {
+              font-size: smaller;
+              position: absolute;
+              top: -10px;
+              left: 24px;
+            }
+          }
+
+        }
+
+
+      }
+
+      .commentsContainer {
+        margin-top: 10px;
+        max-height: 280px;
+        overflow: auto;
+
+        .comments {
+          padding: 10px;
+          margin-top: 10px;
+
+          .comment {
+            display: flex;
+
+            .commentUserImg {
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              margin-right: 10px;
+            }
+
+            .onlyComment {
+              border: 1px solid rgba(121, 121, 121, 0.2);
+              padding: 10px;
+              flex-grow: 1;
+
+              .commentUserInfo {
+
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+
+
+
+                .commentUserName {
+                  font-weight: bold;
+                  font-size: small;
+                }
+
+                .commentDate {
+                  color: #a8a6a6;
+                  font-size: 0.8em;
+
+                }
+
+              }
+
+              .commentText {
+                margin-top: 5px;
+              }
+            }
+          }
+
+
+        }
+      }
+
+      .writeComment {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .userImg {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          border: 2px solid rgba(12, 11, 11, 0.1);
+          position: relative;
+          width: 100%;
+          flex-grow: 1;
+
+          input {
+            outline: none;
+            border: none;
+            outline: none;
+            width: 90%;
+            padding-left: 8px;
+          }
+
+          svg {
+            position: absolute;
+
+            color: rgba(80, 79, 79, 0.5);
+            background-color: rgb(243, 188, 6);
+            border-radius: 50%;
+            cursor: pointer;
+            right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+.replys {
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 30px;
+
+  .reply {
+    display: flex;
+
+    .replyUserImg {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-right: 10px;
+
+    }
+
+    .replyBox {
+      border: 1px solid rgba(121, 121, 121, 0.2);
+      flex-grow: 1;
+      padding: 5px;
+
+
+      .replyUserInfo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+
+        .replyUserName {
+          font-weight: bold;
+          font-size: small;
+        }
+
+        .replyDate {
+          color: #a8a6a6;
+          font-size: 0.8em;
+        }
+
+
+        .replyText {
+          margin-top: 5px;
+        }
+      }
+    }
+
+  }
+}
+
+.refreshPosts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  margin: 0 auto;
+  background-color: #d8d8d8;
+  margin-top: 35px;
+
+  svg{
+    width: 30px;
+    height: 30px;
+    color: #088DCD;
+
+    
+  }
+
+}
+
+
+
+// @media (max-width: 450px) {
+//   #iconInput{
+// // max-width: 120px;
+//   }
+// }

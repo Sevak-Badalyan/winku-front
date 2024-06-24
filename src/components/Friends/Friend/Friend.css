@@ -1,0 +1,36 @@
+.friend{
+    display: flex;
+    gap:17px;
+    align-items: center;
+    padding: 10px;
+    }
+    
+    .friend img{
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        
+    }
+    
+    
+    .friend .friend-info h3{
+        font-size: 13px;
+        color: rgb(37, 37, 37);
+    } 
+    
+    .friend .friend-info p{
+        font-size: 10px;
+        color: rgb(100, 102, 101);
+    }
+    .friend .statImg{
+        position: relative;
+    }
+    .friend .status{
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        bottom: 0px;
+        right: 2px;
+    }

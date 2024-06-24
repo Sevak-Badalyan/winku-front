@@ -1,0 +1,51 @@
+/* .leftbarContainer{
+width: 50px;
+height: 100%;
+border-right:  1px solid #ccc;
+align-items: flex-start;
+
+
+}
+.leftbarContainer ul li{
+justify-content: center;
+align-items: center;
+} */
+
+
+
+/* Leftbar.css */
+.leftbar{
+    width: 50px;
+    height: 1200px;
+    border-right:  1px solid #ccc;
+
+}
+
+
+.leftbarContainer {
+    /* width: 50px;
+    height: 100%; */
+    background-color: #ffffff; /* Change background color as needed */
+    color: #000000; /* Change text color as needed */
+    /* border-right:  1px solid #ccc; */
+  }
+  
+  .leftbarContainer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* flex-direction: column;
+    justify-content: space-evenly; */
+    /* display: flex; */
+    /* align-items:center; */
+  }
+  
+  .leftbarContainer ul li {
+    padding: 17px;
+  }
+  
+  .leftbarContainer ul li a {
+    text-decoration: none;
+    color: inherit; /* Inherit parent color */
+  }
+  
