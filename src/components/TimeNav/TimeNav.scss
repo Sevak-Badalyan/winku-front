@@ -47,12 +47,8 @@
 .timeline .menuTime a:hover,
 .timeline .menuTime a.active {
     position: relative;
-    // font-size: large;
     background-color: #fff;
     color: #088DCD;
-
-    // padding-top: 5px;
-    // padding-left: 5px;
 
     &::after {
         content: '';

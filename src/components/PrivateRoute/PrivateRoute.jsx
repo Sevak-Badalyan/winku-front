@@ -1,6 +1,3 @@
-
-
-// PrivateRoute.jsx
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
@@ -19,7 +16,7 @@ const PrivateRoute = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>; // You can replace this with a loading spinner or some other UI
+    return <div>Loading...</div>; 
   }
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/auth/login" />;

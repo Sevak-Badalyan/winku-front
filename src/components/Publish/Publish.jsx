@@ -60,12 +60,10 @@ export default function Publish({ refreshPosts }) {
 
       console.log('Post created:', response);
 
-      // Clear inputs
       setPostText('');
       setPostPhoto(null);
       setFilePreview(null);
 
-      // Refresh posts
       refreshPosts();
     } catch (error) {
       setPostText('');

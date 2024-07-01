@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Modal from '../Modal/Modal';
 import Search from '../Search/Search';
 
+const photoUrl = import.meta.env.VITE_PHOTO_URL;
 
 
 
@@ -56,7 +57,7 @@ export const Navbar = () => {
 
 
   const [isOpen, setIsOpen] = useState(false);
-  const [currentStatus, setCurrentStatus] = useState('online'); // Track current status
+  const [currentStatus, setCurrentStatus] = useState('online');
   const [showInput, setShowInput] = useState(false);
   const [users, setUsers] = useState([]);
 
@@ -66,14 +67,9 @@ export const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Function to handle status change
   const handleStatusChange = (status) => {
     setCurrentStatus(status);
   };
-  // const {id} = JSON.parse(localStorage.getItem('userData'))
-
-
-
   useEffect(() => {
     setUsers(getUserData())
 
@@ -111,14 +107,14 @@ export const Navbar = () => {
   };
 
 
-  ////////////////////////////
 
   return (
     <>
       <div className='navbarContainer'>
         <Link to='/newsfeed'>
           <div className='leftNav'>
-            <img src="https://wpkixx.com/html/winku/images/logo.png" alt="img" />
+            <img src={`${photoUrl}/upload/default/logo/logo.png`} alt="img" />
+
           </div>
         </Link>
         <div className='minbar'>
@@ -149,7 +145,6 @@ export const Navbar = () => {
 
         <div className='rightNav'>
           <div className='icons'>
-            {/* <ul style={{ listStyleType: 'none', padding: 0 }}> */}
 
             <ul>
 
@@ -175,20 +170,7 @@ export const Navbar = () => {
               
               )}
 
-              {/* {showInput && (
-                <input
-                  className='inputSearch'
-                  type="text"
-                  placeholder="Search..."
-                  autoFocus
-                  style={{
-                    padding: '5px',
-                    marginLeft: '10px',
-                    border: '1px solid #ccc',
-                    borderRadius: '4px'
-                  }}
-                />
-              )} */}
+     
 
 
 
@@ -198,8 +180,8 @@ export const Navbar = () => {
                   <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z" />
                 </svg>
                 </Link>
-              </li>
-              <li>
+               </li>
+            {/*  <li>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16">
                   <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
                 </svg>
@@ -211,7 +193,7 @@ export const Navbar = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-globe-central-south-asia" viewBox="0 0 16 16">
                   <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M4.882 1.731a.48.48 0 0 0 .14.291.487.487 0 0 1-.126.78l-.291.146a.7.7 0 0 0-.188.135l-.48.48a1 1 0 0 1-1.023.242l-.02-.007a1 1 0 0 0-.462-.04 7 7 0 0 1 2.45-2.027m-3 9.674.86-.216a1 1 0 0 0 .758-.97v-.184a1 1 0 0 1 .445-.832l.04-.026a1 1 0 0 0 .152-1.54L3.121 6.621a.414.414 0 0 1 .542-.624l1.09.818a.5.5 0 0 0 .523.047.5.5 0 0 1 .724.447v.455a.8.8 0 0 0 .131.433l.795 1.192a1 1 0 0 1 .116.238l.73 2.19a1 1 0 0 0 .949.683h.058a1 1 0 0 0 .949-.684l.73-2.189a1 1 0 0 1 .116-.238l.791-1.187A.45.45 0 0 1 11.743 8c.16 0 .306.084.392.218.557.875 1.63 2.282 2.365 2.282l.04-.001a7.003 7.003 0 0 1-12.658.905Z" />
                 </svg>
-              </li>
+              </li> */}
               <li>
                 <div className='userImgNav'>
                   <div className='myStatus'>

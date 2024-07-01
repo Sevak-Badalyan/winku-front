@@ -8,9 +8,10 @@ import * as Yup from 'yup';
 import '../Login/Login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { register } from '../../utils/api/usersApi';
+const photoUrl = import.meta.env.VITE_PHOTO_URL;
 
 export default function Register() {
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
 
   const formik = useFormik({
@@ -34,7 +35,7 @@ export default function Register() {
         const response = await register(values);
         console.log("Registration successful", response);
         resetForm();
-        navigate('/auth/login'); // Navigate to the login page after successful registration
+        navigate('/auth/login'); 
       } catch (error) {
         console.error("Registration failed", error);
         setErrorMessage(error.message || 'error');
@@ -50,7 +51,9 @@ export default function Register() {
         <h1>Winku</h1>
         <p>Winku is free to use for as long as you want with two active projects.</p>
         <div className="imgBord">
-          <img src="https://wpkixx.com/html/winku/images/wink.png" alt="" />
+          {/* <img src="https://wpkixx.com/html/winku/images/wink.png" alt="" /> */}
+          <img src={`${photoUrl}/upload/default/login/wink.png`} alt="img" />
+
         </div>
         <p>Follow Us on</p>
       </div>
@@ -151,112 +154,4 @@ export default function Register() {
     </div>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react'
-// import '../Login/Login.css'
-// import { NavLink } from 'react-router-dom';
-// import { register } from '../../utils/api/usersApi';
-
-
-// export default function Register() {
-//   const onRegister = async (event) => {
-//     event.preventDefault();
-//     const { target } = event;
-//     const formData = new FormData(target);
-//     //   register({
-//     //     name: formData.get("name"),
-//     //     surname: formData.get("surname"),
-//     //     username: formData.get("username"),
-//     //     password: formData.get("password"),
-//     //     email: formData.get("email")
-//     //   });
-//     // }
-
-//     const user = {
-//       name: formData.get("name"),
-//       surname: formData.get("surname"),
-//       username: formData.get("username"),
-//       password: formData.get("password"),
-//       role:formData.get("User"),
-//       email: formData.get("email"),
-//       // position: formData.get("position"),
-//     };
-
-//     try {
-//       const response = await register(user);
-//       console.log("Registration successful", response);
-//     } catch (error) {
-//       console.error("Registration failed", error);
-//     }
-//   };
-
-
-
-
-//   return (
-//     <div className='loginContainer'>
-//       <div className='leftLogin'>
-//         <h1>Winku</h1>
-//         <p>Winku is free to use for as long as you want with two active projects.</p>
-//         <div className="imgBord">
-//           <img src="https://wpkixx.com/html/winku/images/wink.png" alt="" />
-
-//         </div>
-
-//         <p>Follow Us on</p>
-//       </div>
-//       <div className="rightLogin">
-//         <div className='loginBlok'>
-//           <h1>Register</h1>
-//           <span>Don’t use Winku Yet?<a href=""> Take the tour </a>or <a href="">Join now</a></span>
-
-//           <form onSubmit={onRegister} >
-//             <input placeholder='Name' name="name" type="text" className='loginInput' />
-
-//             <input placeholder='Surname' name="surname" type="text" className='loginInput' />
-//             <input placeholder="User Name" name="username" type="text" className='loginInput' />
-//             <input placeholder="Password" name="password" type="text" className='loginInput' />
-//             {/* <input placeholder="Position" name="position" type="text" className='loginInput' /> */}
-//             <input placeholder="User" name="User" type="text" className='loginInput' />
-
-
-//             {/* <label>
-//               <span className='text-xs'><input className='remember' type="radio" name='aa' /> Male</span>
-//               <span className='text-xs'><input className='remember' type="radio" name='aa' /> Female</span>
-//             </label> */}
-//             <input placeholder="Email@" name='email' type="text" className='loginInput' />
-//             <div className='loginCheck'>
-//               <input className="remember" type="checkbox" />
-//               <span className='text-xs'>Accept Terms & Conditions?</span>
-//               {/* <p>Always Remember Me.</p> */}
-//               <div className='forgot hover:underline decoration-sky-500/30 text-xs'> <NavLink to='/auth/login'> Already have an account</NavLink></div>
-//             </div>
-//             <div className="buttons">
-//               <button className="loginButton " type='submit'>Register</button>
-//             </div>
-//           </form>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
 

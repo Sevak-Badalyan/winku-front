@@ -1,17 +1,14 @@
 .publishsContainer {
     background-color: rgb(255, 255, 255);
-
-    /* height: 160px; */
     margin-bottom: 20px;
-display: flex;
-flex-direction: column;
-/* margin-top: 38px; */
+    display: flex;
+    flex-direction: column;
 }
 
 .publishsContainer .publishs {
     padding: 30px;
     display: flex;
-    
+
 }
 
 .textContainer {
@@ -33,21 +30,23 @@ flex-direction: column;
     height: 40%;
 }
 
-.publishsContainer .user_image{
+.publishsContainer .user_image {
     border-radius: 50%;
     width: 60px;
     height: 60px;
     margin-right: 20px;
-   
+
 }
-.file-preview{
+
+.file-preview {
     width: 80%;
     height: 200px;
     margin: 0 auto;
     border-radius: 5px;
     margin-bottom: 20px;
 
-} 
+}
+
 .attachments ul {
     display: flex;
     align-items: center;
@@ -79,4 +78,3 @@ flex-direction: column;
     cursor: pointer;
 
 }
-

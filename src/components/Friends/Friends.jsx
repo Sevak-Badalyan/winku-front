@@ -5,15 +5,18 @@ import { getFriends } from '../../utils/api/friendsApi';
 
 
 import './Friends.css'
+import Loader from '../Loader/Loader';
 
 
 export default function Friends() {
   const [friends, setFriends] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getFriends().then((result) => {
       setFriends(result);
+      setLoading(false);
     });
   }, []);
 
@@ -26,6 +29,10 @@ export default function Friends() {
     return fullName.includes(searchTerm);
   });
 
+
+if (loading) { 
+  return <Loader />;
+}
   return (
     <div className='friendsContainer'>
       <div className="friend-list">
@@ -39,9 +46,16 @@ export default function Friends() {
           />
         </div>
         <div className='data'>
-          {filteredFriends.map((friend) => (
+          {/* {filteredFriends.map((friend) => (
             <Friend key={friend.id} friend={friend} />
-          ))}
+          ))} */}
+           {filteredFriends.length > 0 ? (
+          filteredFriends.map((friend) => (
+            <Friend key={friend.id} friend={friend} />
+          ))
+        ) : (
+          <p className='noFriends'>No friends available</p>
+        )}
         </div>
       </div>
     </div>

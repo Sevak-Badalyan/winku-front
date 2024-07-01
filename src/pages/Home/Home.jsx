@@ -3,7 +3,6 @@ import { Navbar } from '../../components/Navbar/Navbar'
 import Feature from '../../components/Feature/Feature'
 import TimeNav from '../../components/TimeNav/TimeNav'
 import Shortcuts from '../../components/Shortcuts/Shortcuts'
-// import Publish from '../../components/Publish/Publish'
 import Friends from '../../components/Friends/Friends'
 import { Outlet } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
@@ -31,25 +30,3 @@ export default function Home() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* 
-      <div className='gridMenu'>
-        <Shortcuts />
-        <div>
-          <Outlet />
-        </div>
-        {!isMessagesPage && <Friends />}
-      </div> */}

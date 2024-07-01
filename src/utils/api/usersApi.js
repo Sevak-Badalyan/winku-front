@@ -1,10 +1,8 @@
   import { BaseApi } from "./base";
-  // import {  useNavigate } from 'react-router-dom';
   const http = new BaseApi();
   const photoUrl =import.meta.env.VITE_PHOTO_URL
 
   export const login = async (body) => {
-    // console.log(body);
     try { 
       const response = await http.post("/auth/login", body);
 
@@ -56,7 +54,6 @@ export const getAllUsers = () => {
   return http.get('/users')                           
 .then(response => response)
 .catch(error => {
-    // console.log(response);
     console.error('Error fetching posts:', error);
     throw error;
   });
@@ -67,7 +64,6 @@ export const searchUsers = (searchText) => {
   return http.postAnswer('/users/search',searchText)                           
 .then(response => response)
 .catch(error => {
-    // console.log(response);
     console.error('Error fetching posts:', error);
     throw error;
   });

@@ -9,6 +9,8 @@ export class BaseApi {
   }
 
 
+  
+
 
   onResponse(response) {
     if (!response.ok) {
@@ -18,7 +20,6 @@ export class BaseApi {
   }
 
   post(path, body) {
-    // const { accessToken } = JSON.parse(localStorage.getItem('userData'));
 
     return fetch(`${this.apiUrl}${this.prefix}${path}`, {
       method: 'POST',
@@ -60,6 +61,7 @@ export class BaseApi {
     }).then(this.onResponse);
   }
 
+  
   postAnswer(path, body) {
     const { accessToken } = JSON.parse(localStorage.getItem('userData'));
 
@@ -103,7 +105,6 @@ export class BaseApi {
     formData.append('id', id);
     formData.append('type', type);
     formData.append('image', file);
-    // formData.append('postText', text);
 
 
     return fetch(`${this.apiUrl}${this.prefix}${path}`, {

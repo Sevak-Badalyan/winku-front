@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getUserData } from '../../utils/api/usersApi';
 import { changePicture } from '../../utils/api/uploadApi';
 import './Feature.scss'
-// const defaultCover ='upload/default/cover/54ca2cf5-b891-4c7e-8484-9403fa310d9b.png';
-// const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+
 const photoUrl =import.meta.env.VITE_PHOTO_URL
 export default function Feature() {
 
@@ -43,29 +42,17 @@ export default function Feature() {
       console.error('Error uploading file:', error);
     }
   };
-  // const getCoverImage = () => {
-  //   return users.coverImg && !users.coverImg.endsWith('null')
-  //     ? users.coverImg
-  //     : `${photoUrl}${defaultCover}`;
-  // };
-  // const getProfileImage = () => {
-  //   return users.profileImg && !users.profileImg.endsWith('null')
-  //     ? users.profileImg
-  //     : `${photoUrl}${defaultPhoto}`;
-  // };
 
   return (
     <div className='featureContainer'>
       <div className="featurePhoto">
         
-      {/* <img src={getCoverImage()} alt="Cover" /> */}
 
         <img src={users.coverImg } alt="" />
       </div>
 
       <div className='userPhoto'>
         <img src={users.profileImg } alt="" />
-        {/* <img src={getProfileImage()} alt="Profile" /> */}
         <input type="file" accept='image/*' id='file2' name='file2' onChange={(e) => handleUpload(e, 'profile')} />
 
         <label htmlFor='file2'  >

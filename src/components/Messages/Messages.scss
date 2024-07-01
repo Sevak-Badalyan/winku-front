@@ -14,6 +14,14 @@
     justify-content: space-between;
     align-items: center;
 
+    .modalIcons {
+      display: flex;
+
+      svg {
+        margin: 7px;
+      }
+    }
+
     svg {
       color: rgb(52, 137, 207);
     }
@@ -42,20 +50,15 @@
 
   .leftFriends {
     width: auto;
+    height: 480px;
+    overflow: hidden;
+    overflow-y: auto;
 
-
-    .friendsList {
+    .friendsList,
+    .groupsList {
       list-style: none;
       padding: 0;
-      height: 480px;
-      overflow: hidden;
-      overflow-y: auto;
-      // display: flex;
-      // flex-direction: column;
       left: 5px;
-      // &:hover{
-      //   overflow: auto;
-      // }
 
       li {
         border-bottom: 1px solid rgb(219, 219, 219);
@@ -65,21 +68,28 @@
         .friendsInfo {
           display: flex;
           align-items: center;
-          // justify-content: space-between;
-          
+          position: relative;
+
           width: 100%;
-         
+
+          .groupMembers {
+            color: #bbb;
+            position: absolute;
+            right: 3px;
+          }
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+
+          }
+
           .statImg {
             position: relative;
 
-            img {
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              margin-right: 10px;
-              object-fit: cover;
-
-            }
+         
 
             .status {
               width: 6px;
@@ -91,7 +101,8 @@
               left: 2px;
             }
           }
-          .infFriend{
+
+          .infFriend {
             margin-right: 5px;
           }
         }
@@ -103,8 +114,6 @@
   .messagesBox {
     padding: 10px;
     flex: 2;
-    
-// width: 80%;
     img {
       width: 40px;
       height: 40px;
@@ -121,12 +130,19 @@
       display: flex;
       align-items: center;
 
+
       img {
         width: 50px;
         height: 50px;
         border-radius: 50%;
         margin-right: 20px;
       }
+
+    }
+
+    .groupBut {
+      display: flex;
+      flex-direction: column;
 
     }
 
@@ -144,19 +160,15 @@
     }
 
     .get {
-      // background-color: #dedeee;
       padding: 10px;
       border-radius: 10px;
     }
+
     .textContainer {
       border: 1px solid rgba(204, 204, 204, 0.7);
-      position: relative; 
+      position: relative;
+
       textarea {
-        // margin-left: 10px;
-        // resize: none;
-        // outline: none;
-        // border: none;
-        // height: 50px;
         margin-left: 10px;
         resize: none;
         outline: none;
@@ -164,26 +176,28 @@
         height: 57px;
         width: 90%;
       }
-      .sendMesBut{
-        position: absolute;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      right: -5px;
-      bottom:1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      svg{
-        color: #e6e6e6;
 
+      .sendMesBut {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        right: -5px;
+        bottom: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          color: #e6e6e6;
+
+        }
       }
+
     }
-  
-  }
-  
- 
-  
+
+
+
   }
 
 }
@@ -206,6 +220,17 @@
   color: #999;
 }
 
+.noMes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  color: rgb(131, 131, 131);
+
+}
 
 
 
@@ -222,7 +247,7 @@
       width: 100%;
       margin-bottom: 10px;
       height: 200px;
-    overflow: auto;
+      overflow: auto;
 
 
       .friendsList {
@@ -232,7 +257,8 @@
 
     .messagesBox {
       flex: none;
-      .friendInfoMes{
+
+      .friendInfoMes {
         background-color: #e9e8e8;
         padding: 10px;
         width: 100%;
@@ -240,15 +266,10 @@
 
       .messagesData {
         height: 300px;
-        p{
+
+        p {
           max-width: 180px;
         }
-        // div{
-        //   width: 80%;
-        // }
-    //  img{
-    //   display: none;
-    //  }
       }
 
       .textContainer {

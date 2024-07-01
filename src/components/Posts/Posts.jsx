@@ -1,7 +1,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { writeComment, writeReply } from '../../utils/api/postApi';
+import { delPostsById, writeComment, writeReply } from '../../utils/api/postApi';
 import { getUserData } from '../../utils/api/usersApi';
 import './Posts.scss';
 import { useLocation } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
 const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
 
-export default function Posts({ posts ,setPosts }) {
+export default function Posts({ posts, setPosts }) {
   const [commentText, setCommentText] = useState({});
   const [users, setUser] = useState({});
   const [replyText, setReplyText] = useState({});
@@ -87,9 +87,9 @@ export default function Posts({ posts ,setPosts }) {
           comments: post.comments.map(comment =>
             comment.comments_id === commentId
               ? {
-                  ...comment,
-                  replies: [...(comment.replies || []), newReply]
-                }
+                ...comment,
+                replies: [...(comment.replies || []), newReply]
+              }
               : comment
           )
         }))
@@ -125,6 +125,16 @@ export default function Posts({ posts ,setPosts }) {
       hour12: true,
     }).format(date);
   };
+  const deletePost = async (posts_id) => {
+    try {
+    const response = await delPostsById(posts_id);
+    console.log('Deleted post:', response);
+    setPosts((prevPosts) => prevPosts.filter(elem => elem.posts_id != posts_id))
+    } catch (error) {
+    console.error('Error deleting post:', error);
+      
+    }
+  }
 
   return (
     <div className="bigPost">
@@ -137,6 +147,16 @@ export default function Posts({ posts ,setPosts }) {
                 {post.userName} {post.userSurname}
                 <div className="publishDate text-xs">Published: {formatDate(post.postCreatedAt)}</div>
               </div>
+              {pathname === '/'? 
+               <span
+              onClick={() => deletePost(post.posts_id)}
+              className="close-button"
+            >
+              &times;
+            </span>:false
+            }
+           
+
             </div>
             <div className="postContent">
               {post.postPhoto && !post.postPhoto.includes('/undefined') ? (
@@ -176,7 +196,7 @@ export default function Posts({ posts ,setPosts }) {
                           </div>
                         </button>
                       </div>
-                      <div className="commentText text-sm font-light">{comment.commentText }</div>
+                      <div className="commentText text-sm font-light">{comment.commentText}</div>
                     </div>
                   </div>
 
@@ -243,7 +263,7 @@ export default function Posts({ posts ,setPosts }) {
         ))}
       </div>
 
-   
+
     </div>
   );
 }

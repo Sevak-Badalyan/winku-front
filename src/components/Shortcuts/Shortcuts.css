@@ -12,11 +12,13 @@
 .shortContainer li {
     display:flex;
 align-items: center;
+justify-content: start;
     padding: 10px;
     color: rgba(34, 34, 34, 0.7);
 }
 .shortContainer li p{
     margin-left: 8px;
+    margin-top: -3px;
 }
 .shortContainer li a:hover{
 

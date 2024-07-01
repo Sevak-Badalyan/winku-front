@@ -47,14 +47,7 @@ export default function Friendspage() {
     setActiveTab(tab);
   };
 
-  // const handleUnfriend = async (friend_id) => {
-  //   try {
-  //     await deleteFriends(friend_id);
-  //     console.log('Friendship deleted successfully');
-  //   } catch (error) {
-  //     console.error('Failed to delete friendship:', error);
-  //   }
-  // };
+  
 
   const handleUnfriend = async (friend_id) => {
     deleteFriends(friend_id)

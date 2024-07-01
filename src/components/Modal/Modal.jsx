@@ -36,7 +36,7 @@ const Modal = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await editUsers(formData); // Assuming editUsers updates data in the API/database
+      await editUsers(formData);
       const updatedUserData = {
         ...users,
         name: formData.name,

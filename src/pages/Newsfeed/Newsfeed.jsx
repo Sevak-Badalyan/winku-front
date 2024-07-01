@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import Shortcuts from '../../components/Shortcuts/Shortcuts';
 import Publish from '../../components/Publish/Publish';
@@ -21,14 +12,6 @@ export default function Newsfeed() {
 
   const [posts, setPosts] = useState([]);
 
-  // const fetchPosts = async () => {
-  //   try {
-  //     const postsData = await getPosts();
-  //     setPosts(postsData);
-  //   } catch (error) {
-  //     console.error('Error fetching posts:', error);
-  //   }
-  // };
 
 
   const fetchPosts = async () => {

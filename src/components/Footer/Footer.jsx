@@ -1,6 +1,7 @@
 import React from 'react'
 import './Footer.scss'
 import TitleUnderline from '../TitleUnderline/TitleUnderline'
+const photoUrl = import.meta.env.VITE_PHOTO_URL;
 
 export default function Footer() {
   return (
@@ -9,7 +10,9 @@ export default function Footer() {
 <div className='footerContainer'>
 
 <div className='logoFoo'>
-  <img src="https://www.wpkixx.com/html/winku/images/logo.png" alt="" />
+  {/* <img src="https://www.wpkixx.com/html/winku/images/logo.png" alt="" /> */}
+  <img src={`${photoUrl}/upload/default/logo/logo.png`} alt="img" />
+
   <p>The trio took this simple idea and built it into the world’s leading carpooling platform.</p>
   <ul>
     <li >

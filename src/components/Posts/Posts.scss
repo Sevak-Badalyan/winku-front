@@ -1,12 +1,9 @@
-// Posts.scss
 .bigPost {
 
   .postsContainer {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    // width: 100%;
-
     .post {
 
       background-color: white;
@@ -17,7 +14,7 @@
         align-items: center;
         gap: 10px;
         margin-bottom: 10px;
-
+position: relative;
         .name {
           font-weight: 700;
           color: #088DCD;
@@ -38,6 +35,12 @@
         .publishDate {
           color: #666;
 
+        }
+        .close-button{
+          cursor: pointer;
+        color: #8f8f8f;
+        position: absolute;
+        right: 5px;
         }
       }
 
@@ -251,11 +254,3 @@
   }
 
 }
-
-
-
-// @media (max-width: 450px) {
-//   #iconInput{
-// // max-width: 120px;
-//   }
-// }

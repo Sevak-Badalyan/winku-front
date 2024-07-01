@@ -1,38 +1,4 @@
-// import React from 'react'
-// import './Friend.css'
 
-// const data = [
-//     {
-//         id: 1,
-//         name: 'Bucky',
-//         surname: "Barnes",
-//         email:'barnes@gmail.com',
-//         img: 'https://wpkixx.com/html/winku/images/resources/friend-avatar.jpg'
-//     },
-//     {
-//         id: 2,
-//         name: 'Sarah',
-//         surname: "Loren",
-//         email:'loren@gmail.com',
-//         img: 'https://wpkixx.com/html/winku/images/resources/friend-avatar2.jpg'
-//     },
-//     {
-//         id: 3,
-//         name: 'Jason',
-//         surname: "Boren",
-//         email:'boren@gmail.com',
-//         img: 'https://wpkixx.com/html/winku/images/resources/friend-avatar3.jpg'
-//     },
-// ]
-
-// export default function
-//     () {
-//     return (
-//         <div>
-
-//         </div>
-//     )
-// }
 
 import React from 'react';
 import './Friend.css';
@@ -48,7 +14,7 @@ const getStatusColor = (status) => {
         case 'away':
             return 'orange';
         default:
-            return 'grey'; // Default color if status is not recognized
+            return 'grey';
     }
 };
 

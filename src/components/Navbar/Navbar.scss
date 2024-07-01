@@ -45,7 +45,7 @@
           position: absolute;
           top: 44px;
           left: -180px;
-          background-color: #f0f0f0;
+          background-color: #ffffff;
 
           ul {
             display: flex;
@@ -55,11 +55,11 @@
             overflow: auto;
             padding: 10px;
 li{
-  border: 1px solid rgb(207, 207, 207);
+  border: 1px solid rgb(233, 233, 233);
   margin: 0 auto;
   width: 100%;
   cursor: pointer;
-  background-color: #e7e7e7;
+  background-color: #ffffff;
 
 div{
   display: flex;
@@ -219,9 +219,7 @@ padding: 3px;
   }
 }
 
-// nav {
-//   display: none;
-// }
+
 .miniCont{
   display: none;
 }
@@ -237,27 +235,26 @@ padding: 3px;
   }
 
   .menu {
-    display: none; // Hide the menu by default
+    display: none; 
   }
 
   .menu.open {
-    display: block; // Show the menu when it's open
+    display: block;
   }
 
   .sidebar-toggle {
-    display: block; // Show the sidebar toggle button for mobile view
+    display: block; 
   }
   .miniCont{
     display: block;
-    // {
-    //   display: none;
-    // }
   }
+}
+.inputSearch{
+background-color: rgb(255, 255, 255);
 }
 @media (max-width: 450px) {
   .inputSearch {
     width: 95%;
-    // margin-left: 0;
     
     margin: 0 auto;
   }
@@ -270,7 +267,3 @@ padding: 3px;
   }
 
 }
-
-
-// @media (max-width: 450px) {
-// }
