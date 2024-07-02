@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:7071/",
+        target: "https://winku-back.onrender.com/",
           //  ws: true,  // enable WebSocket proxying
               // logLevel: 'debug', // optional: enable debug logging
         changeOrigin: true,
