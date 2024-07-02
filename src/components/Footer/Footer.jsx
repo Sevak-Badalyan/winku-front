@@ -10,7 +10,6 @@ export default function Footer() {
 <div className='footerContainer'>
 
 <div className='logoFoo'>
-  {/* <img src="https://www.wpkixx.com/html/winku/images/logo.png" alt="" /> */}
   <img src={`${photoUrl}/upload/default/logo/logo.png`} alt="img" />
 
   <p>The trio took this simple idea and built it into the world’s leading carpooling platform.</p>

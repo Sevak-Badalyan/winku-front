@@ -46,9 +46,7 @@ if (loading) {
           />
         </div>
         <div className='data'>
-          {/* {filteredFriends.map((friend) => (
-            <Friend key={friend.id} friend={friend} />
-          ))} */}
+       
            {filteredFriends.length > 0 ? (
           filteredFriends.map((friend) => (
             <Friend key={friend.id} friend={friend} />

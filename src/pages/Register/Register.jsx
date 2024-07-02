@@ -27,7 +27,7 @@ export default function Register() {
       name: Yup.string().min(3).max(10).required('Name is required'),
       surname: Yup.string().min(3).max(10).required('Surname is required'),
       username: Yup.string().min(4).max(10).required('Username is required'),
-      password: Yup.string().min(3).max(10).required('Password is required'),
+      password: Yup.string().min(5).max(10).required('Password is required'),
       email: Yup.string().min(5).max(30).email('Invalid email address').required('Email is required'),
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {

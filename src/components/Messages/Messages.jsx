@@ -11,9 +11,10 @@ import { getGroupMessageById, getGroups } from '../../utils/api/groupsApi';
 import DelMember from '../DelMember/DelMember';
 
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
-const socketUrl = import.meta.env.SOCKET_URL;
+const socketUrl = import.meta.env.VITE_SOCKET_URL;
 const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
 const messageTone = new Audio('/src/components/Messages/iphone.mp3')
+
 
 const getStatusColor = (status) => {
   switch (status) {
@@ -44,8 +45,9 @@ const Messages = () => {
   const [groupsList, setGroupsList] = useState([]);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
+
   useEffect(() => {
-    const socket = io.connect("http://localhost:7071");
+    const socket = io.connect(socketUrl);
     setSocket(socket);
 
     return () => {
@@ -320,7 +322,6 @@ const Messages = () => {
           <div className='friendInfoMes '>
             {activeTab.group_id ? (
 
-              // <img src="https://cdn.pixabay.com/photo/2020/05/29/13/26/icons-5235125_1280.png" alt={`${activeTab.name} ${activeTab.surname}`} />
               <img src={`${photoUrl}/upload/default/group/group.png`} alt={`${activeTab.name} ${activeTab.surname}`} />
             ) : (
               <img src={`${photoUrl}${activeTab.profileImg || defaultPhoto}`} alt={`${activeTab.name} ${activeTab.surname}`} />

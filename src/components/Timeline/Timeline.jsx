@@ -2,7 +2,6 @@
 
 
 import React, { useState, useEffect } from 'react';
-import './Timeline.scss';
 import Posts from '../Posts/Posts';
 import Publish from '../Publish/Publish';
 import { getPostsById } from '../../utils/api/postApi';

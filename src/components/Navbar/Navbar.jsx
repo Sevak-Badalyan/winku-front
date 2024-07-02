@@ -9,24 +9,24 @@ const photoUrl = import.meta.env.VITE_PHOTO_URL;
 
 
 
-const menuItems = [
-  {
-    title: 'Home ⌵',
-    subMenu: ['HOME ', 'PHOTOS', 'FRIENDS', 'MESSAGES', 'NEWS FEED']
-  },
-  {
-    title: 'Timeline ⌵',
-    subMenu: ['TIMELINE', 'TIMELINE FRIENDS', 'TIMELINE GROUPS', 'TIMELINE PAGES', 'TIMELINE PHOTOS', 'TIMELINE VIDEOS']
-  },
-  {
-    title: 'Account Settings ⌵',
-    subMenu: ['CREATE FAV PAGE', 'EDIT ACCOUNT SETTING', 'EDIT-INTERESR', 'EDIT-PASSWORD', 'EDIT PROFILE BASICS', ' EDIT WORK EDUCATIONS', 'MESSAGE BOX', 'INBOX', 'NOTIFICATIONS PAGE']
-  },
-  {
-    title: 'More Pages ⌵',
-    subMenu: ['CAREERS', 'CAREER DETAIL', '404 ERROR PAGE', '404 STYLE2', 'FAQS PAGE', 'INSIGHTS', 'KNOWLEDGE BASE']
-  }
-];
+// const menuItems = [
+//   {
+//     title: 'Home ⌵',
+//     subMenu: ['HOME ', 'PHOTOS', 'FRIENDS', 'MESSAGES', 'NEWS FEED']
+//   },
+//   {
+//     title: 'Timeline ⌵',
+//     subMenu: ['TIMELINE', 'TIMELINE FRIENDS', 'TIMELINE GROUPS', 'TIMELINE PAGES', 'TIMELINE PHOTOS', 'TIMELINE VIDEOS']
+//   },
+//   {
+//     title: 'Account Settings ⌵',
+//     subMenu: ['CREATE FAV PAGE', 'EDIT ACCOUNT SETTING', 'EDIT-INTERESR', 'EDIT-PASSWORD', 'EDIT PROFILE BASICS', ' EDIT WORK EDUCATIONS', 'MESSAGE BOX', 'INBOX', 'NOTIFICATIONS PAGE']
+//   },
+//   {
+//     title: 'More Pages ⌵',
+//     subMenu: ['CAREERS', 'CAREER DETAIL', '404 ERROR PAGE', '404 STYLE2', 'FAQS PAGE', 'INSIGHTS', 'KNOWLEDGE BASE']
+//   }
+// ];
 
 const getStatusColor = (status) => {
   switch (status) {
@@ -126,7 +126,7 @@ export const Navbar = () => {
         </div>
         <div className='centerNav'>
 
-          <div className='menu'>
+          {/* <div className='menu'>
             <ul>
               {menuItems.map((menuItem, index) => (
                 <li key={index}>
@@ -139,7 +139,7 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
 
 
@@ -207,7 +207,7 @@ export const Navbar = () => {
                     </div>
                   </div>
                   <ul className={isOpen ? 'active' : ''}>
-
+{/* 
                     <li>
                       <span>Online</span>
                       <div className="status"></div>
@@ -224,7 +224,7 @@ export const Navbar = () => {
                       <div className="status"></div>
 
                       <StatusIndicator status="offline" onClick={handleStatusChange} />
-                    </li>
+                    </li> */}
 
 
                     <li>
