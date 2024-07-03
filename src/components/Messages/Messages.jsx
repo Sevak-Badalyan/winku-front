@@ -82,9 +82,9 @@ const Messages = () => {
 
           const groups = await getGroups();
           setGroupsList(groups);
-          if(friends.length === 0){
-            return  <p className='noMes'>No messages available</p>;
-          }else if (friends.length > 0) {
+          if (friends.length === 0) {
+            return <p className='noMes'>No messages available</p>;
+          } else if (friends.length > 0) {
             const firstFriend = friends[0];
             setActiveTab(firstFriend);
 
@@ -218,14 +218,14 @@ const Messages = () => {
   };
 
 
-  if(friendsList.length === 0){
+  if (friendsList.length === 0) {
     // setLoading(false);
-    return <p className='noMes'>No messages available</p>; 
-      }
+    return <p className='noMes'>No messages available</p>;
+  }
 
   if (!activeTab) {
     return <Loader />
-  } 
+  }
   // else if (friendsList.length === 0) {
   //   // setLoading(false);
   //   return <p className='noMes'>No messages available</p>;
