@@ -1,9 +1,9 @@
-
+const nodeUrl = import.meta.env.VITE_NODE_URL;
 
 export class BaseApi {
 
   prefix = "";
-  apiUrl = "https://winku-back.onrender.com"
+  apiUrl = nodeUrl
   constructor(prefix = "/api/v1") {
     this.prefix = prefix;
   }
