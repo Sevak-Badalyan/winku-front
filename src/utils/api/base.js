@@ -1,10 +1,9 @@
-
 const nodeUrl = import.meta.env.VITE_NODE_URL;
 
 export class BaseApi {
 
   prefix = "";
-  apiUrl = nodeUrl;
+  apiUrl = nodeUrl
   constructor(prefix = "/api/v1") {
     this.prefix = prefix;
   }
