@@ -3,7 +3,7 @@
 export class BaseApi {
 
   prefix = "";
-  apiUrl = "/api"
+  apiUrl = "https://winku-back.onrender.com"
   constructor(prefix = "/api/v1") {
     this.prefix = prefix;
   }
