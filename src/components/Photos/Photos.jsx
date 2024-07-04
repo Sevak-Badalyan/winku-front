@@ -22,7 +22,7 @@ export default function Photos() {
             <div className='photos'>
                 {photos.map((photo, index) => (
                     <div key={index}>
-                        <img src={`${photoUrl}${photos[index].postPhoto}`} alt={`Photo ${index + 1}`} />
+                        <img src={`${photoUrl}/${photos[index].postPhoto}`} alt={`Photo ${index + 1}`} />
                     </div>
                 ))}
             </div>

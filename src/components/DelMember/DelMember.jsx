@@ -4,9 +4,9 @@
 import React, { useState, useEffect } from 'react';
 import { delMembers, getMembers } from '../../utils/api/groupsApi';
 import "./DelMember.scss";
-
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
-const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+const pfp = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultPhoto  = photoUrl + pfp;
 
 const DelMember = ({ isOpen, onClose, group_id }) => {
   const [membersList, setMembersList] = useState([]);
@@ -49,7 +49,7 @@ const { id } = JSON.parse(localStorage.getItem('userData'));
          <div className="members-list">
           {membersList.map((member) => (
             <div key={member.user_id} className="member-item">
-              <img src={`${photoUrl}${member.profileImg || defaultPhoto}`} alt={`${member.name} ${member.surname}`} />
+              <img src={`${member.profileImg || defaultPhoto}`} alt={`${member.name} ${member.surname}`} />
               <label className='memberGroup' htmlFor={`member-${member.user_id}`}>{member.name} {member.surname}</label>
               {member.user_id === id ? (
                 <button onClick={() => handleDelete(member.user_id)}>

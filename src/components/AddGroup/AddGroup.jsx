@@ -5,7 +5,8 @@ import { getFriends } from '../../utils/api/friendsApi';
 import { addGroups, addMembers } from '../../utils/api/groupsApi';
 
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
-const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+const pfp = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultPhoto  = photoUrl + pfp;
 
 const AddGroup = ({ isOpen, onClose }) => {
   const [groupName, setGroupName] = useState('');
@@ -72,7 +73,7 @@ const AddGroup = ({ isOpen, onClose }) => {
           <div className="group-friend-list">
             {friendsList.map((friend) => (
               <div key={friend.id} className="group-friend-item">
-                <img src={`${photoUrl}${friend.profileImg || defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
+                <img src={`${friend.profileImg || defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
                 <label className='frGroup' htmlFor={`friend-${friend.id}`}>{friend.name} {friend.surname}</label>
                 <input
                   className='modalInp'

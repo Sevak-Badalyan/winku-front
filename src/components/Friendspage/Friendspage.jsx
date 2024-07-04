@@ -4,7 +4,8 @@ import './Friendspage.scss';
 import { getFriends, getFriendsRequests, deleteFriends, answerFriendsRequests, getExplorePeoples, addFriends } from '../../utils/api/friendsApi';
 
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
-const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+const pfp = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultPhoto  = photoUrl + pfp;
 
 export default function Friendspage() {
   const [activeTab, setActiveTab] = useState('friends');
@@ -126,7 +127,7 @@ export default function Friendspage() {
       <div className='friends'>
         {activeTab === 'friends' && friends.map((friend) => (
           <div key={friend.friendships_id} className='friendItem shadow hover:shadow-xl'>
-            <img src={`${photoUrl}${friend.profileImg || defaultPhoto}`} className='friendProfile' alt={`${friend.name} ${friend.surname}`} />
+            <img src={`${friend.profileImg || defaultPhoto}`} className='friendProfile' alt={`${friend.name} ${friend.surname}`} />
             <div className='friendInfo'>
               <p>{`${friend.name} ${friend.surname}`}</p>
               <p className='text-sky-500 text-sm'>{friend.position}</p>
@@ -145,7 +146,7 @@ export default function Friendspage() {
         ))}
         {activeTab === 'friendRequests' && friendsReq.map((friendReq) => (
           <div key={friendReq.request_id} className='friendItem shadow hover:shadow-xl'>
-            <img src={`${photoUrl}${friendReq.profileImg || defaultPhoto}`} alt={`${friendReq.name} ${friendReq.surname}`} />
+            <img src={`${friendReq.profileImg || defaultPhoto}`} alt={`${friendReq.name} ${friendReq.surname}`} />
             <div className='friendInfo'>
               <p>{`${friendReq.name} ${friendReq.surname}`}</p>
               <p className='text-sky-500 text-sm'>{friendReq.position}</p>
@@ -183,7 +184,7 @@ export default function Friendspage() {
         ))}
         {activeTab === 'explorePeoples' && explorePeoples.map((explorePeople) => (
           <div key={explorePeople.id} className='friendItem shadow hover:shadow-xl'>
-            <img src={`${photoUrl}${explorePeople.profileImg || defaultPhoto}`} alt={`${explorePeople.name} ${explorePeople.surname}`} />
+            <img src={`${explorePeople.profileImg || defaultPhoto}`} alt={`${explorePeople.name} ${explorePeople.surname}`} />
             <div className='friendInfo'>
               <p>{`${explorePeople.name} ${explorePeople.surname}`}</p>
               <p className='text-sky-500 text-sm'>{explorePeople.position}</p>
