@@ -113,7 +113,7 @@ export const Navbar = () => {
       <div className='navbarContainer'>
         <Link to='/newsfeed'>
           <div className='leftNav'>
-            <img src={`${photoUrl}/upload/default/logo/logo.png`} alt="img" />
+            <img src={`${photoUrl}upload/default/logo/logo.png`} alt="img" />
 
           </div>
         </Link>

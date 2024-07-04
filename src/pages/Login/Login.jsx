@@ -37,7 +37,7 @@ export default function Login() {
         <p>Winku is free to use for as long as you want with two active projects.</p>
         <div className="imgBord">
           {/* <img src="https://wpkixx.com/html/winku/images/wink.png" alt="" /> */}
-          <img src={`${photoUrl}/upload/default/login/wink.png`} alt="img" />
+          <img src={`${photoUrl}upload/default/login/wink.png`} alt="img" />
 
         </div>
         <p>Follow Us on</p>
