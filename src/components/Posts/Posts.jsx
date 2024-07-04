@@ -7,7 +7,8 @@ import './Posts.scss';
 import { useLocation } from 'react-router-dom';
 
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
-const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+const pfp = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultPhoto  = photoUrl + pfp;
 
 export default function Posts({ posts, setPosts }) {
   const [commentText, setCommentText] = useState({});
@@ -142,7 +143,7 @@ export default function Posts({ posts, setPosts }) {
         {posts.map(post => (
           <div key={post.posts_id} className="post">
             <div className="userInfo">
-              <img src={`${photoUrl}${post.userProfileImg || defaultPhoto}`} alt={post.name} className="userImg" />
+              <img src={`${post.userProfileImg || defaultPhoto}`} alt={post.name} className="userImg" />
               <div className="name">
                 {post.userName} {post.userSurname}
                 <div className="publishDate text-xs">Published: {formatDate(post.postCreatedAt)}</div>
@@ -160,7 +161,7 @@ export default function Posts({ posts, setPosts }) {
             </div>
             <div className="postContent">
               {post.postPhoto && !post.postPhoto.includes('/undefined') ? (
-                <img src={`${photoUrl}${post.postPhoto}`} alt="Post" className="postPhoto" />
+                <img src={`${post.postPhoto}`} alt="Post" className="postPhoto" />
               ) : null}
               <div className="interactions">
                 <div className="likes">
@@ -183,7 +184,7 @@ export default function Posts({ posts, setPosts }) {
               {post.comments.map(comment => (
                 <div key={comment.comments_id} className="comments">
                   <div className="comment">
-                    <img src={`${photoUrl}${comment.userProfileImg || defaultPhoto}`} alt={comment.userName} className="commentUserImg" />
+                    <img src={`${comment.userProfileImg || defaultPhoto}`} alt={comment.userName} className="commentUserImg" />
                     <div className="onlyComment">
                       <div className="commentUserInfo">
                         <div className="commentUserName font-light">{comment.userName}</div>
@@ -203,7 +204,7 @@ export default function Posts({ posts, setPosts }) {
                   {comment.replies && comment.replies.map(reply => (
                     <div key={reply.replies_id} className="replys">
                       <div className='reply'>
-                        <img src={`${photoUrl}${reply.userProfileImg || defaultPhoto}`} alt={reply.userName} className="replyUserImg" />
+                        <img src={`${reply.userProfileImg || defaultPhoto}`} alt={reply.userName} className="replyUserImg" />
                         <div className="replyBox">
                           <div className="replyUserInfo">
                             <div className="replyUserName">{reply.userName}</div>

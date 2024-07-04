@@ -1,6 +1,8 @@
   import { BaseApi } from "./base";
   const http = new BaseApi();
   const photoUrl =import.meta.env.VITE_PHOTO_URL
+const defaultPFP = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultCover=import.meta.env.VITE_DEFAULT_COVER
 
   export const login = async (body) => {
     try { 
@@ -8,13 +10,13 @@
 
       console.log("REPONSE", response);
 
-      const profileImg = response.profileImg ? response.profileImg : 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp' 
-      const coverImg = response.coverImg ? response.coverImg : 'upload/default/cover/54ca2cf5-b891-4c7e-8484-9403fa310d9b.png' 
+      const profileImg = response.profileImg ? response.profileImg : `${photoUrl}/${defaultPFP}`
+      const coverImg = response.coverImg ? response.coverImg : `${photoUrl}/${defaultCover}`
 
   const modifiedResponse = {
     ...response,
-    profileImg: `${photoUrl}${profileImg}`,
-    coverImg: `${photoUrl}${coverImg}`,
+    profileImg: `${profileImg}`,
+    coverImg: `${coverImg}`,
   }
   return { modifiedResponse};
     } catch (error) {

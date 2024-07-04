@@ -3,7 +3,7 @@ import { getUserData } from '../../utils/api/usersApi';
 import { changePicture } from '../../utils/api/uploadApi';
 import './Feature.scss'
 
-const photoUrl =import.meta.env.VITE_PHOTO_URL
+// const photoUrl = import.meta.env.VITE_PHOTO_URL
 export default function Feature() {
 
 
@@ -12,7 +12,7 @@ export default function Feature() {
     const userData = getUserData();
     setUser(userData);
   }, []);
-  
+
   const handleUpload = async (event, type) => {
     const selectedFile = event.target.files[0];
 
@@ -23,21 +23,21 @@ export default function Feature() {
 
     try {
       let response = await changePicture({ file: selectedFile, type: type });
-      if(!response.imagePath ){
-        response.imagePath =`upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp`
+      if (!response.imagePath) {
+        // response.imagePath =``
       }
       const updatedUser = { ...users };
-     
+
       if (type === 'profile') {
-        updatedUser.profileImg = `${photoUrl}${response.imagePath}`
+        updatedUser.profileImg = `${response.imagePath}`
       } else if (type === 'cover') {
-        updatedUser.coverImg = `${photoUrl}${response.imagePath }`
+        updatedUser.coverImg = `${response.imagePath}`
       }
 
       setUser(updatedUser);
       localStorage.setItem('userData', JSON.stringify(updatedUser));
 
-      console.log('User data updated successfully:', updatedUser);
+      // console.log('User data updated successfully:', updatedUser);
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -46,13 +46,13 @@ export default function Feature() {
   return (
     <div className='featureContainer'>
       <div className="featurePhoto">
-        
 
-        <img src={users.coverImg } alt="" />
+
+        <img src={users.coverImg} alt="" />
       </div>
 
       <div className='userPhoto'>
-        <img src={users.profileImg } alt="" />
+        <img src={users.profileImg} alt="" />
         <input type="file" accept='image/*' id='file2' name='file2' onChange={(e) => handleUpload(e, 'profile')} />
 
         <label htmlFor='file2'  >

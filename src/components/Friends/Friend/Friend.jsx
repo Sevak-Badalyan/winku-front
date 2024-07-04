@@ -4,7 +4,9 @@ import React from 'react';
 import './Friend.css';
 
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
-const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+const pfp = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultPhoto  = photoUrl + pfp;
+
 const getStatusColor = (status) => {
     switch (status) {
         case 'online':
@@ -27,7 +29,7 @@ export default function Friend({ friend }) {
             <div className='statImg'>
 
 
-                <img src={`${photoUrl}${friend.profileImg|| defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
+                <img src={`${friend.profileImg|| defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
 
 
 

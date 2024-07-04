@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPhotos } from '../../utils/api/photosApi';
 import './Photos.scss';
-const photoUrl = import.meta.env.VITE_PHOTO_URL;
 
 export default function Photos() {
 
@@ -22,7 +21,7 @@ export default function Photos() {
             <div className='photos'>
                 {photos.map((photo, index) => (
                     <div key={index}>
-                        <img src={`${photoUrl}${photos[index].postPhoto}`} alt={`Photo ${index + 1}`} />
+                        <img src={`${photos[index].postPhoto}`} alt={`Photo ${index + 1}`} />
                     </div>
                 ))}
             </div>

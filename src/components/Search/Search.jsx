@@ -5,7 +5,8 @@ import React, { useState, useEffect } from 'react';
 import { searchUsers } from '../../utils/api/usersApi';
 
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
-const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+const pfp = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultPhoto  = photoUrl + pfp;
 
 export default function Search() {
   const [searchText, setSearchText] = useState('');
@@ -60,7 +61,7 @@ export default function Search() {
             filteredUsers.map((user) => (
               <li key={user.id} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
                 <div style={{ marginRight: '10px' }}>
-                  <img src={`${photoUrl}${user.profileImg || defaultPhoto}`} alt={`${user.name} ${user.surname}`} style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+                  <img src={`${user.profileImg || defaultPhoto}`} alt={`${user.name} ${user.surname}`} style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
                 </div>
                 <div>
                   <p>{user.name}</p>

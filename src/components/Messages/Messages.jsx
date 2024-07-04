@@ -10,9 +10,10 @@ import AddGroup from '../AddGroup/AddGroup';
 import { getGroupMessageById, getGroups } from '../../utils/api/groupsApi';
 import DelMember from '../DelMember/DelMember';
 
-const photoUrl = import.meta.env.VITE_PHOTO_URL;
 const socketUrl = import.meta.env.VITE_SOCKET_URL;
-const defaultPhoto = 'upload/default/profile/beff811f-c8ce-44b1-9ebb-21e699f6d82a.webp';
+const photoUrl = import.meta.env.VITE_PHOTO_URL;
+const pfp = import.meta.env.VITE_DEFAULT_PROFILE
+const defaultPhoto  = photoUrl + pfp;
 const messageTone = new Audio('/src/components/Messages/iphone.mp3')
 
 
@@ -259,7 +260,7 @@ const Messages = () => {
               <li key={friend.friendships_id} onClick={() => handleTabClick(friend)}>
                 <div className='friendsInfo cursor-pointer'>
                   <div className='statImg'>
-                    <img src={`${photoUrl}${friend.profileImg || defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
+                    <img src={`${friend.profileImg || defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
                     <div className="status" style={{ outline: '3px solid', outlineColor: getStatusColor(friend.status) }}></div>
                   </div>
                   <p className="infFriend">{friend.name}</p>
@@ -274,7 +275,7 @@ const Messages = () => {
                   <li key={friend.friendships_id} onClick={() => handleTabClick(friend)}>
                     <div className='friendsInfo cursor-pointer'>
                       <div className='statImg'>
-                        <img src={`${photoUrl}${friend.profileImg || defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
+                        <img src={`${friend.profileImg || defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
                         <div className="status" style={{ outline: '3px solid', outlineColor: getStatusColor(friend.status) }}></div>
                       </div>
                       <p className="infFriend">{friend.name}</p>
@@ -324,7 +325,7 @@ const Messages = () => {
 
               <img src={`${photoUrl}/upload/default/group/group.png`} alt={`${activeTab.name} ${activeTab.surname}`} />
             ) : (
-              <img src={`${photoUrl}${activeTab.profileImg || defaultPhoto}`} alt={`${activeTab.name} ${activeTab.surname}`} />
+              <img src={`${activeTab.profileImg || defaultPhoto}`} alt={`${activeTab.name} ${activeTab.surname}`} />
             )}
 
 
@@ -359,7 +360,7 @@ const Messages = () => {
                     }
 
                     <img
-                      src={`${photoUrl}${activeTab.profileImg || msg.profileImg || defaultPhoto}`}
+                      src={`${activeTab.profileImg || msg.profileImg || defaultPhoto}`}
                       alt={`${activeTab?.name} ${activeTab?.surname}`}
                     />
 
