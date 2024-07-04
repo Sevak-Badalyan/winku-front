@@ -3,7 +3,7 @@ import { getUserData } from '../../utils/api/usersApi';
 import { changePicture } from '../../utils/api/uploadApi';
 import './Feature.scss'
 
-const photoUrl = import.meta.env.VITE_PHOTO_URL
+// const photoUrl = import.meta.env.VITE_PHOTO_URL
 export default function Feature() {
 
 
