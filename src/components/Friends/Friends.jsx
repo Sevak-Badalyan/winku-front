@@ -1,12 +1,13 @@
+
+
 import React, { useEffect, useState } from 'react';
 import Friend from './Friend/Friend';
 import TitleUnderline from '../TitleUnderline/TitleUnderline';
 import { getFriends } from '../../utils/api/friendsApi';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-
-import './Friends.css'
-import Loader from '../Loader/Loader';
-
+import './Friends.css';
 
 export default function Friends() {
   const [friends, setFriends] = useState([]);
@@ -29,10 +30,6 @@ export default function Friends() {
     return fullName.includes(searchTerm);
   });
 
-
-if (loading) { 
-  return <Loader />;
-}
   return (
     <div className='friendsContainer'>
       <div className="friend-list">
@@ -46,16 +43,26 @@ if (loading) {
           />
         </div>
         <div className='data'>
-       
-           {filteredFriends.length > 0 ? (
-          filteredFriends.map((friend) => (
-            <Friend key={friend.id} friend={friend} />
-          ))
-        ) : (
-          <p className='noFriends'>No friends available</p>
-        )}
+          {loading ? (
+            Array.from({ length: 3 }).map((_, index) => (
+              <div key={index} className="skeleton-loader">
+                <Skeleton circle={true} height={40} width={40} />
+                <div>
+                  <Skeleton width={100} />
+                  <Skeleton width={150} />
+                </div>
+              </div>
+            ))
+          ) : filteredFriends.length > 0 ? (
+            filteredFriends.map((friend) => (
+              <Friend key={friend.id} friend={friend} />
+            ))
+          ) : (
+            <p className='noFriends'>No friends available</p>
+          )}
         </div>
       </div>
     </div>
   );
 }
+

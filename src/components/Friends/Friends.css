@@ -1,32 +1,47 @@
-.friendsContainer{
+
+
+.friendsContainer {
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
     padding: 10px;
     position: sticky;
-    top:67px
-}
-.friend-list{
+    top: 67px;
+  }
+  
+  .friend-list {
     background-color: rgb(255, 255, 255);
- 
-
-}
-
-.friend-list input{
-    margin:20px;
+  }
+  
+  .friend-list input {
+    margin: 20px;
     outline: none;
     border: 1px solid rgb(204, 204, 204);
     padding-right: 20px;
     width: 80%;
-}
-.friend-list .data{
+  }
+  
+  .friend-list .data {
     min-height: 10px;
     max-height: 280px;
     overflow: auto;
-}
-
-.noFriends{
+  }
+  
+  .noFriends {
     display: flex;
     justify-content: center;
     align-items: center;
     color: rgb(131, 131, 131);
-}
+  }
+  
+  .skeleton-loader {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .skeleton-loader div {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
