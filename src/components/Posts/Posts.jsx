@@ -71,7 +71,7 @@ export default function Posts({ posts, setPosts }) {
       }
 
       const response = await writeReply({ comments_id: commentId, repliesText: replyText[commentId] });
-      console.log('Reply posted:', response);
+      // console.log('Reply posted:', response);
 
       setReplyText({ ...replyText, [commentId]: '' });
       setReplyToComment({ postId: null, commentId: null });
@@ -129,7 +129,7 @@ export default function Posts({ posts, setPosts }) {
   const deletePost = async (posts_id) => {
     try {
     const response = await delPostsById(posts_id);
-    console.log('Deleted post:', response);
+    // console.log('Deleted post:', response);
     setPosts((prevPosts) => prevPosts.filter(elem => elem.posts_id != posts_id))
     } catch (error) {
     console.error('Error deleting post:', error);

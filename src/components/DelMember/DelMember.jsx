@@ -32,7 +32,7 @@ const handleDelete = async (user_id) => {
     const response = await delMembers({group_id, user_id});
 
     setMembersList(membersList.filter(member => member.user_id !== user_id));
-    console.log('Deleted:', response);
+    // console.log('Deleted:', response);
   } catch (error) {
     console.error('Error deleting member:', error);
   } 

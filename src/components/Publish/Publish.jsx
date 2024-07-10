@@ -58,7 +58,7 @@ export default function Publish({ refreshPosts }) {
 
       const response = await createPost(body);
 
-      console.log('Post created:', response);
+      // console.log('Post created:', response);
 
       setPostText('');
       setPostPhoto(null);

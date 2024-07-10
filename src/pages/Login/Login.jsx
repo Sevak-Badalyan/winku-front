@@ -20,7 +20,7 @@ export default function Login() {
         password: formData.get("password"),
       });
 
-      console.log("response.access", response);
+      // console.log("response.access", response);
 
       localStorage.setItem('userData', JSON.stringify(response.modifiedResponse));
       navigate('/');

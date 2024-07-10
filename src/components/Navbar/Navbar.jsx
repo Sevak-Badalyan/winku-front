@@ -102,7 +102,7 @@ export const Navbar = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
+    // console.log(data);
     handleCloseModal();
   };
 

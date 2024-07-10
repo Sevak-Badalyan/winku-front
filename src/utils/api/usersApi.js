@@ -8,7 +8,7 @@ const defaultCover=import.meta.env.VITE_DEFAULT_COVER
     try { 
       const response = await http.post("/auth/login", body);
 
-      console.log("REPONSE", response);
+      // console.log("REPONSE", response);
       const profileImg = response.profileImg ? response.profileImg : `${photoUrl}${defaultPFP}`
       const coverImg = response.coverImg ? response.coverImg : `${photoUrl}${defaultCover}`
 

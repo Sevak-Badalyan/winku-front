@@ -7,7 +7,7 @@ export const  createPost = async ({  type, postText, postPhoto }) => {
 
   try {
     const response = await http.postPhotoUpload("/newsfeed",postPhoto, type, postText);
-    console.log("resdataid",response );              
+    // console.log("resdataid",response );              
     return response;              
   } catch (error) {              
     console.error('Error:', error);              
@@ -19,7 +19,7 @@ export const  createPost = async ({  type, postText, postPhoto }) => {
 export const writeComment = async ({ post_id, commentText }) => {
   try {
     const response = await http.comment("/comments", { post_id, commentText });
-    console.log("commentresponse", response);
+    // console.log("commentresponse", response);
     return response;
   } catch (error) {
     console.error('Error:', error);
@@ -29,7 +29,7 @@ export const writeComment = async ({ post_id, commentText }) => {
 export const writeReply = async ({ comments_id, repliesText }) => {
   try {
     const response = await http.reply("/replies", { comments_id, repliesText });
-    console.log("reply response", response);
+    // console.log("reply response", response);
     return response;
   } catch (error) {
     console.error('Error:', error);

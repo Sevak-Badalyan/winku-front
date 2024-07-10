@@ -15,7 +15,8 @@ const socketUrl = import.meta.env.VITE_SOCKET_URL;
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
 const pfp = import.meta.env.VITE_DEFAULT_PROFILE
 const defaultPhoto = photoUrl + pfp;
-const messageTone = new Audio('/src/components/Messages/iphone.mp3')
+
+
 
 
 const getStatusColor = (status) => {
@@ -33,6 +34,7 @@ const getStatusColor = (status) => {
 
 
 const Messages = () => {
+
   const [friendsList, setFriendsList] = useState(undefined);
   const [users, setUsers] = useState({});
   const [activeTab, setActiveTab] = useState(null);
@@ -48,7 +50,7 @@ const Messages = () => {
   const [groupsList, setGroupsList] = useState([]);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
-
+const messageTone = new Audio('./src/components/Messages/iphone.mp3')
   useEffect(() => {
     const socket = io.connect(socketUrl);
     setSocket(socket);
