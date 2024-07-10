@@ -9,11 +9,12 @@ import Loader from "../Loader/Loader";
 import AddGroup from '../AddGroup/AddGroup';
 import { getGroupMessageById, getGroups } from '../../utils/api/groupsApi';
 import DelMember from '../DelMember/DelMember';
+import SkeletonMes from './SkeletonMes';
 
 const socketUrl = import.meta.env.VITE_SOCKET_URL;
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
 const pfp = import.meta.env.VITE_DEFAULT_PROFILE
-const defaultPhoto  = photoUrl + pfp;
+const defaultPhoto = photoUrl + pfp;
 const messageTone = new Audio('/src/components/Messages/iphone.mp3')
 
 
@@ -30,8 +31,9 @@ const getStatusColor = (status) => {
   }
 };
 
+
 const Messages = () => {
-  const [friendsList, setFriendsList] = useState([]);
+  const [friendsList, setFriendsList] = useState(undefined);
   const [users, setUsers] = useState({});
   const [activeTab, setActiveTab] = useState(null);
   const [currentMessage, setCurrentMessage] = useState("");
@@ -41,7 +43,7 @@ const Messages = () => {
   const [socket, setSocket] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenDel, setIsModalOpenDel] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loadingMes, setLoadingMes] = useState(false);
 
   const [groupsList, setGroupsList] = useState([]);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
@@ -65,14 +67,15 @@ const Messages = () => {
       try {
         const userData = await getUserData();
         setUsers(userData);
+        setFriendsList(userData.friends); 
       } catch (error) {
         console.error('Error fetching user data:', error);
+        setFriendsList([]); 
       }
     };
 
     fetchUserData();
   }, []);
-
   useEffect(() => {
     const fetchFriends = async () => {
       if (users.id) {
@@ -117,6 +120,10 @@ const Messages = () => {
   useEffect(() => {
     if (socket) {
       const handleMessage = (data) => {
+      //   <audio
+      //   src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
+      //   ref={audioRef}
+      // ></audio>
         messageTone.play().catch(error => {
           console.error('Error playing the message tone:', error);
         });
@@ -219,18 +226,24 @@ const Messages = () => {
   };
 
 
-  if (friendsList.length === 0) {
-    // setLoading(false);
-    return <p className='noMes'>No messages available</p>;
-  }
 
-  if (!activeTab) {
-    return <Loader />
-  }
-  // else if (friendsList.length === 0) {
-  //   // setLoading(false);
-  //   return <p className='noMes'>No messages available</p>;
-  // }
+
+if (friendsList === undefined) {
+  return <SkeletonMes />;
+}
+
+if (friendsList.length === 0) {
+  return <p className='noMes'>No messages available</p>;
+}
+
+if (!activeTab) {
+  return <SkeletonMes />;
+}
+
+
+
+
+
 
   return (
     <div className='messageContainer'>
@@ -246,7 +259,7 @@ const Messages = () => {
         </div>
         <div onClick={openModal} className='modalIcons cursor-pointer'>
 
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-envelope-plus" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-envelope-plus cursor-pointer" viewBox="0 0 16 16">
             <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z" />
             <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5" />
           </svg>
@@ -256,19 +269,7 @@ const Messages = () => {
       <div className='messages'>
         <div className='leftFriends'>
           <ul className='friendsList'>
-            {/* {friendsList.map((friend) => (
-              <li key={friend.friendships_id} onClick={() => handleTabClick(friend)}>
-                <div className='friendsInfo cursor-pointer'>
-                  <div className='statImg'>
-                    <img src={`${friend.profileImg || defaultPhoto}`} alt={`${friend.name} ${friend.surname}`} />
-                    <div className="status" style={{ outline: '3px solid', outlineColor: getStatusColor(friend.status) }}></div>
-                  </div>
-                  <p className="infFriend">{friend.name}</p>
-                  <p>{friend.surname}</p>
-                  <p className={activeTab.friendships_id === friend.friendships_id ? 'active' : ''}></p>
-                </div>
-              </li>
-            ))} */}
+
             {
               friendsList.length > 0 ? (
                 friendsList.map((friend) => (
@@ -292,43 +293,29 @@ const Messages = () => {
           <ul className='groupsList'>
 
             {groupsList.map((group) => (
-
               <li key={group.group_id} onClick={() => handleTabClickGroup(group)}>
-
-
                 <div className='friendsInfo cursor-pointer'>
-
                   <img src={`${photoUrl}/upload/default/group/group.png`} alt={`${activeTab.name} ${activeTab.surname}`} />
                   <p className="infFriend">{group.group_name}</p>
-
-
                   <button onClick={openModalDel} className='groupMembers'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots" viewBox="0 0 16 16">
                       <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                     </svg>
-
                   </button>
-
                   <p className={activeTab.group_id === group.group_id ? 'active' : ''}></p>
-
-
                 </div>
               </li>
+
             ))}
           </ul>
         </div>
-
-
         <div className='messagesBox'>
           <div className='friendInfoMes '>
             {activeTab.group_id ? (
-
               <img src={`${photoUrl}/upload/default/group/group.png`} alt={`${activeTab.name} ${activeTab.surname}`} />
             ) : (
               <img src={`${activeTab.profileImg || defaultPhoto}`} alt={`${activeTab.name} ${activeTab.surname}`} />
             )}
-
-
             <div>
               <p>{activeTab.name} {activeTab.surname}</p>
               <p>{activeTab.status}</p>
@@ -336,10 +323,7 @@ const Messages = () => {
 
               </p>
             </div>
-
-
           </div>
-
           <hr />
           <div className="messagesData" ref={messagesDataRef}>
             {messageList.sort((a, b) => new Date(a.created_at) - new Date(b.created_at)).map((msg, index) => (
@@ -401,8 +385,6 @@ const Messages = () => {
           onClose={closeModal}
         />
       )}
-
-
       {isModalOpenDel && (
         <DelMember
           isOpen={isModalOpenDel}

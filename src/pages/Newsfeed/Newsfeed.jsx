@@ -7,10 +7,12 @@ import './Newsfeed.css';
 import Footer from '../../components/Footer/Footer';
 import Posts from '../../components/Posts/Posts';
 import { getPosts } from '../../utils/api/postApi';
+import SkeletonPosts from '../../components/Posts/SkeletonPosts';
 
 export default function Newsfeed() {
 
   const [posts, setPosts] = useState([]);
+  const [loadingPosts, setLoadingPosts] = useState(true);
 
 
 
@@ -22,15 +24,20 @@ export default function Newsfeed() {
           
           const updatedPosts = [...posts, ...postsData];
           setPosts(updatedPosts);
+          
         } catch (error) {
           console.error('Error fetching posts:', error);
-        } 
+        } finally{
+      setLoadingPosts(false);
+
+        }
       };
 
   useEffect(() => {
     fetchPosts();
   }, []);
   const handleRefresh = () => {
+    setLoadingPosts(true); 
         fetchPosts();
       };
   return (
@@ -42,7 +49,14 @@ export default function Newsfeed() {
         <Shortcuts />
         <div>
           <Publish refreshPosts={fetchPosts} />
-          <Posts posts={posts } setPosts={setPosts}/>
+          {loadingPosts ? (
+        <div>
+          <SkeletonPosts />
+          <SkeletonPosts />
+        </div>
+      ) : (
+        <Posts posts={posts} setPosts={setPosts} />
+      )}
           <button className='refreshPosts' onClick={handleRefresh}>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />

@@ -1,3 +1,9 @@
+
+.newsfeedContainer{
+  max-width: 1440px;
+  margin:0 auto;
+}
+
 .gridMenu {
 
   padding-left: 7%;

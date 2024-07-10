@@ -37,7 +37,7 @@ export default function Feature() {
       setUser(updatedUser);
       localStorage.setItem('userData', JSON.stringify(updatedUser));
 
-      // console.log('User data updated successfully:', updatedUser);
+     
     } catch (error) {
       console.error('Error uploading file:', error);
     }

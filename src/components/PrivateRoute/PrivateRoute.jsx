@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const PrivateRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,7 +17,7 @@ const PrivateRoute = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>; 
+    return <Loader/> 
   }
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/auth/login" />;

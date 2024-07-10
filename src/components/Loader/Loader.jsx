@@ -7,9 +7,9 @@ export default function Loader() {
   return (
     <div className="loader-container">
       <l-cardio
-        size="50"
-        stroke="4"
-        speed="2"
+        size="100"
+        stroke="6"
+        speed="4"
         color="black"
       ></l-cardio>
     </div>
