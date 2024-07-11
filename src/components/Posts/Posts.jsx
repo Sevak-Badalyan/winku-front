@@ -5,6 +5,7 @@ import { delPostsById, writeComment, writeReply } from '../../utils/api/postApi'
 import { getUserData } from '../../utils/api/usersApi';
 import './Posts.scss';
 import { useLocation } from 'react-router-dom';
+import LoaderMin from '../Loader/LoaderMin';
 
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
 const pfp = import.meta.env.VITE_DEFAULT_PROFILE
@@ -16,10 +17,13 @@ export default function Posts({ posts, setPosts }) {
   const [replyText, setReplyText] = useState({});
   const [replyToComment, setReplyToComment] = useState({ postId: null, commentId: null });
   const { pathname } = useLocation();
+  const [loadingPhotos, setLoadingPhotos] = useState(true);
+
 
   useEffect(() => {
     const userData = getUserData();
     setUser(userData);
+    // setLoadingPhotos(false)
   }, []);
 
   const handleInputChange = (postId, event) => {
@@ -133,7 +137,7 @@ export default function Posts({ posts, setPosts }) {
     setPosts((prevPosts) => prevPosts.filter(elem => elem.posts_id != posts_id))
     } catch (error) {
     console.error('Error deleting post:', error);
-      
+  
     }
   }
 
@@ -160,6 +164,8 @@ export default function Posts({ posts, setPosts }) {
 
             </div>
             <div className="postContent">
+
+
               {post.postPhoto && !post.postPhoto.includes('/undefined') ? (
                 <img src={`${post.postPhoto}`} alt="Post" className="postPhoto" />
               ) : null}
@@ -179,7 +185,7 @@ export default function Posts({ posts, setPosts }) {
               </div>
               <div className="postText text-sm font-light">{post.postText}</div>
             </div>
-
+  
             <div className="commentsContainer">
               {post.comments.map(comment => (
                 <div key={comment.comments_id} className="comments">

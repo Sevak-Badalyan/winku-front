@@ -50,7 +50,6 @@ const Messages = () => {
   const [groupsList, setGroupsList] = useState([]);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
-const messageTone = new Audio('./src/components/Messages/iphone.mp3')
   useEffect(() => {
     const socket = io.connect(socketUrl);
     setSocket(socket);
@@ -69,10 +68,10 @@ const messageTone = new Audio('./src/components/Messages/iphone.mp3')
       try {
         const userData = await getUserData();
         setUsers(userData);
-        setFriendsList(userData.friends); 
+        setFriendsList(userData.friends);
       } catch (error) {
         console.error('Error fetching user data:', error);
-        setFriendsList([]); 
+        setFriendsList([]);
       }
     };
 
@@ -123,6 +122,8 @@ const messageTone = new Audio('./src/components/Messages/iphone.mp3')
   useEffect(() => {
     if (socket) {
       const handleMessage = (data) => {
+        const messageTone = new Audio('./src/components/Messages/new2.ogg')
+
         messageTone.play().catch(error => {
           console.error('Error playing the message tone:', error);
         });
@@ -154,15 +155,15 @@ const messageTone = new Audio('./src/components/Messages/iphone.mp3')
 
   const handleTabClick = async (friend) => {
     setActiveTab(friend);
-    setLoadingMes(true); 
+    setLoadingMes(true);
     const messages = await getFriendsMessageById(friend.friendships_id);
     setMessageList(messages);
-    setLoadingMes(false); 
+    setLoadingMes(false);
   };
 
   const handleTabClickGroup = async (group) => {
     setActiveTab(group);
-    setLoadingMes(true); 
+    setLoadingMes(true);
     const messages = await getGroupMessageById(group.group_id);
     setMessageList(messages);
     setLoadingMes(false);
@@ -232,17 +233,17 @@ const messageTone = new Audio('./src/components/Messages/iphone.mp3')
 
 
 
-if (friendsList === undefined) {
-  return <SkeletonMes />;
-}
+  if (friendsList === undefined) {
+    return <SkeletonMes />;
+  }
 
-if (friendsList.length === 0) {
-  return <p className='noMes'>No messages available</p>;
-}
+  if (friendsList.length === 0) {
+    return <p className='noMes'>No messages available</p>;
+  }
 
-if (!activeTab) {
-  return <SkeletonMes />;
-}
+  if (!activeTab) {
+    return <SkeletonMes />;
+  }
 
 
 
@@ -330,34 +331,34 @@ if (!activeTab) {
           </div>
           <hr />
           <div className="messagesData" ref={messagesDataRef}>
-      {loadingMes ? (
-        <LoaderMin />
-     
-      ) : (
-        messageList.sort((a, b) => new Date(a.created_at) - new Date(b.created_at)).map((msg, index) => (
-          <div key={index} className={msg.sender_id === users.id ? 'send' : 'get'}>
-            {msg.sender_id === users.id ? (
-              <div className='flex'>
-                <p className='bg-sky-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
-                <img src={users.profileImg || "/src/assets/images/pfp.webp"} alt='' className='ml-3' />
-              </div>
+            {loadingMes ? (
+              <LoaderMin />
+
             ) : (
-              <div className='flex'>
-                {msg.profileImg && msg.profileImg.startsWith('/api') && (msg.profileImg = msg.profileImg.split('/api')[1])}
-                <img
-                  src={`${activeTab.profileImg || msg.profileImg || defaultPhoto}`}
-                  alt={`${activeTab?.name} ${activeTab?.surname}`}
-                />
-                <div>
-                  <p className='text-xs text-neutral-400'>{msg.name} {msg.surname}</p>
-                  <p className='bg-green-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
+              messageList.sort((a, b) => new Date(a.created_at) - new Date(b.created_at)).map((msg, index) => (
+                <div key={index} className={msg.sender_id === users.id ? 'send' : 'get'}>
+                  {msg.sender_id === users.id ? (
+                    <div className='flex'>
+                      <p className='bg-sky-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
+                      <img src={users.profileImg || "/src/assets/images/pfp.webp"} alt='' className='ml-3' />
+                    </div>
+                  ) : (
+                    <div className='flex'>
+                      {msg.profileImg && msg.profileImg.startsWith('/api') && (msg.profileImg = msg.profileImg.split('/api')[1])}
+                      <img
+                        src={`${activeTab.profileImg || msg.profileImg || defaultPhoto}`}
+                        alt={`${activeTab?.name} ${activeTab?.surname}`}
+                      />
+                      <div>
+                        <p className='text-xs text-neutral-400'>{msg.name} {msg.surname}</p>
+                        <p className='bg-green-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
+              ))
             )}
           </div>
-        ))
-      )}
-    </div>    
           <div className='textContainer'>
 
             <textarea
