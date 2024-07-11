@@ -35,7 +35,7 @@ function App() {
 
             <Route path='photos' element={<Suspense fallback={<LoaderMin/>}> <LazyPhotos /></Suspense>}  />
             <Route path='friendspage' element={<Suspense fallback={<LoaderMin/>}> <LazyFriendspage/></Suspense>}  />
-            <Route path='' element={<Suspense fallback={<SkeletonPosts/> }> <LazyTimeline/></Suspense>}  />
+            <Route path='' element={<Suspense fallback={<LoaderMin/> }> <LazyTimeline/></Suspense>}  />
             <Route path='messages' element={<Suspense fallback={<SkeletonMes/>}> <LazyMessages /></Suspense>}  />
 
           </Route>

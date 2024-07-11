@@ -1,39 +1,5 @@
 
 
-
-// import React, { useState, useEffect } from 'react';
-// import Posts from '../Posts/Posts';
-// import Publish from '../Publish/Publish';
-// import { getPostsById } from '../../utils/api/postApi';
-
-// export default function Timeline() {
-//   const [posts, setPosts] = useState([]);
-//   const [loadingPosts, setLoadingPosts] = useState(true);
-
-//   const fetchPosts = async () => {
-//     try {
-//       const { id } = JSON.parse(localStorage.getItem('userData'));
-//       const postsData = await getPostsById(id);
-//       setPosts(postsData);
-//     } catch (error) {
-//       console.error('Error fetching posts:', error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchPosts();
-//   }, []);
-
-//   return (
-//     <div>
-//       <Publish refreshPosts={fetchPosts} />
-//       <Posts posts={posts} setPosts={setPosts} />
-//     </div>
-//   );
-// }
-
-
-
 import React, { useState, useEffect } from 'react';
 import Posts from '../Posts/Posts';
 import Publish from '../Publish/Publish';
@@ -45,6 +11,7 @@ export default function Timeline() {
   const [loadingPosts, setLoadingPosts] = useState(true);
 
   const fetchPosts = async () => {
+    setLoadingPosts(true);
     try {
       const { id } = JSON.parse(localStorage.getItem('userData'));
       const postsData = await getPostsById(id);
@@ -60,9 +27,14 @@ export default function Timeline() {
     fetchPosts();
   }, []);
 
+  const handleRefreshPosts = async () => {
+    setLoadingPosts(true);
+    await fetchPosts();
+  };
+
   return (
     <div>
-      <Publish refreshPosts={fetchPosts} />
+      <Publish refreshPosts={handleRefreshPosts} />
       {loadingPosts ? (
         <div>
           <SkeletonPosts />

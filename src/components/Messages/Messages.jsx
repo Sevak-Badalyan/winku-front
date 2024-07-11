@@ -5,11 +5,11 @@ import './Messages.scss';
 import { getUserData } from '../../utils/api/usersApi';
 import TitleUnderline from '../TitleUnderline/TitleUnderline';
 import { getFriends, getFriendsMessageById } from '../../utils/api/friendsApi';
-import Loader from "../Loader/Loader";
 import AddGroup from '../AddGroup/AddGroup';
 import { getGroupMessageById, getGroups } from '../../utils/api/groupsApi';
 import DelMember from '../DelMember/DelMember';
 import SkeletonMes from './SkeletonMes';
+import LoaderMin from '../Loader/LoaderMin';
 
 const socketUrl = import.meta.env.VITE_SOCKET_URL;
 const photoUrl = import.meta.env.VITE_PHOTO_URL;
@@ -93,9 +93,10 @@ const messageTone = new Audio('./src/components/Messages/iphone.mp3')
           } else if (friends.length > 0) {
             const firstFriend = friends[0];
             setActiveTab(firstFriend);
-
             const messages = await getFriendsMessageById(firstFriend.friendships_id);
+            <LoaderMin />
             setMessageList(messages);
+
           }
 
         } catch (error) {
@@ -122,10 +123,6 @@ const messageTone = new Audio('./src/components/Messages/iphone.mp3')
   useEffect(() => {
     if (socket) {
       const handleMessage = (data) => {
-      //   <audio
-      //   src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
-      //   ref={audioRef}
-      // ></audio>
         messageTone.play().catch(error => {
           console.error('Error playing the message tone:', error);
         });
@@ -154,17 +151,22 @@ const messageTone = new Audio('./src/components/Messages/iphone.mp3')
     scrollToBottom();
   }, [messageList]);
 
+
   const handleTabClick = async (friend) => {
     setActiveTab(friend);
+    setLoadingMes(true); 
     const messages = await getFriendsMessageById(friend.friendships_id);
     setMessageList(messages);
-  };
-  const handleTabClickGroup = async (group) => {
-    setActiveTab(group);
-    const messages = await getGroupMessageById(group.group_id);
-    setMessageList(messages);
+    setLoadingMes(false); 
   };
 
+  const handleTabClickGroup = async (group) => {
+    setActiveTab(group);
+    setLoadingMes(true); 
+    const messages = await getGroupMessageById(group.group_id);
+    setMessageList(messages);
+    setLoadingMes(false);
+  };
 
 
   const sendMessage = async () => {
@@ -328,42 +330,34 @@ if (!activeTab) {
           </div>
           <hr />
           <div className="messagesData" ref={messagesDataRef}>
-            {messageList.sort((a, b) => new Date(a.created_at) - new Date(b.created_at)).map((msg, index) => (
-              <div key={index} className={msg.sender_id === users.id ? 'send' : 'get'}>
-                {msg.sender_id === users.id ? (
-                  <div className='flex'>
-
-                    <p className='bg-sky-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
-                    <img src={users.profileImg || "/src/assets/images/pfp.webp"} alt='' className='ml-3' />
-                  </div>
-                ) : (
-                  <div className='flex'>
-
-                    {
-                      (msg.profileImg && msg.profileImg.startsWith('/api')) ?
-                        msg.profileImg = msg.profileImg.split('/api')[1] : false
-
-                    }
-
-                    <img
-                      src={`${activeTab.profileImg || msg.profileImg || defaultPhoto}`}
-                      alt={`${activeTab?.name} ${activeTab?.surname}`}
-                    />
-
-
-
-                    <div>
-
-                      <p className='text-xs text-neutral-400'>  {msg.name} {msg.surname}</p>
-
-                      <p className='bg-green-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
-                    </div>
-
-                  </div>
-                )}
+      {loadingMes ? (
+        <LoaderMin />
+     
+      ) : (
+        messageList.sort((a, b) => new Date(a.created_at) - new Date(b.created_at)).map((msg, index) => (
+          <div key={index} className={msg.sender_id === users.id ? 'send' : 'get'}>
+            {msg.sender_id === users.id ? (
+              <div className='flex'>
+                <p className='bg-sky-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
+                <img src={users.profileImg || "/src/assets/images/pfp.webp"} alt='' className='ml-3' />
               </div>
-            ))}
+            ) : (
+              <div className='flex'>
+                {msg.profileImg && msg.profileImg.startsWith('/api') && (msg.profileImg = msg.profileImg.split('/api')[1])}
+                <img
+                  src={`${activeTab.profileImg || msg.profileImg || defaultPhoto}`}
+                  alt={`${activeTab?.name} ${activeTab?.surname}`}
+                />
+                <div>
+                  <p className='text-xs text-neutral-400'>{msg.name} {msg.surname}</p>
+                  <p className='bg-green-100 pl-3 pr-3 pt-2 rounded'>{msg.message}</p>
+                </div>
+              </div>
+            )}
           </div>
+        ))
+      )}
+    </div>    
           <div className='textContainer'>
 
             <textarea
