@@ -119,10 +119,10 @@ const Messages = () => {
   }, [activeTab, socket]);
 
 
+  const messageTone = new Audio('/new2.ogg')
   useEffect(() => {
     if (socket) {
       const handleMessage = (data) => {
-        const messageTone = new Audio('./src/components/Messages/new2.ogg')
 
         messageTone.play().catch(error => {
           console.error('Error playing the message tone:', error);
